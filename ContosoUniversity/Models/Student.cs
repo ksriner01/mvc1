@@ -3,15 +3,49 @@
 //This includes their full name and enrollment date for the courses they enrolled in.
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
     public class Student
     {
         public int ID { get; set; }
+        //kriner-mvc5
+        //Sets the maximum string length to 50. Makes the property required and changes the displayed name
+        //in the textbox rather to Last Name than the property name itself.
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        //kriner-mvc5
+        //Sets the maximum string length to 50. Makes the property required.
+        [Required]
+        [StringLength(50)]
+        //kriner-mvc5
+        //Part of the System.ComponentModel.DataAnnotations.Schema which allows the change of what the
+        //column in the database is named as. Changes the displayed name in the textbox rather to First
+        //Name than the property name itself.
+        [Column("FirstName")]
+        [Display(Name = "First Name")]
         public string FirstMidName { get; set; }
+        //kriner-mvc5
+        //Part of the System.ComponentModel.DataAnnotations namespace which can allow the specification of
+        //property data types, in this case date.
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EnrollmentDate { get; set; }
+        //kriner-mvc5
+        //Changes the displayed name in the textbox rather to Full Name than the property name itself.
+        //The Full Name is the Last Name, and FirstMidName properties put together.
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get
+            {
+                return LastName + ", " + FirstMidName;
+            }
+        }
 
         public ICollection<Enrollment> Enrollments { get; set; }
     }
