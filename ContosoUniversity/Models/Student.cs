@@ -29,6 +29,7 @@ namespace ContosoUniversity.Models
         //property data types, in this case date.
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Enrollment Date")]
         public DateTime EnrollmentDate { get; set; }
         //kriner-mvc5
         //Changes the displayed name in the textbox rather to Full Name than the property name itself.

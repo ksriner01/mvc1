@@ -31,11 +31,11 @@ namespace ContosoUniversity.Data
         {
             modelBuilder.Entity<Course>().ToTable("Course");
             modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
-            modelBuilder.Entity<Student>().ToTable("Student");
+            modelBuilder.Entity<Student>().ToTable("Person");
             //kriner-mvc5
             //Adds the new entities the database table.
             modelBuilder.Entity<Department>().ToTable("Department");
-            modelBuilder.Entity<Instructor>().ToTable("Instructor");
+            modelBuilder.Entity<Instructor>().ToTable("Person");
             modelBuilder.Entity<OfficeAssignment>().ToTable("OfficeAssignment");
             modelBuilder.Entity<CourseAssignment>().ToTable("CourseAssignment");
             //kriner-mvc9

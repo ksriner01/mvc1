@@ -36,10 +36,14 @@ namespace ContosoUniversity.Controllers
 
             //kriner-mvc8
             //Added AsNoTracking for better optimization and eager loading for the Administrator.
+            //kriner-mvc10
+            //Performs a raw SQL query to retrieve a department.
+            string query = "SELECT * FROM Department WHERE DepartmentID = {0}";
             var department = await _context.Departments
-                .Include(i => i.Administrator)
+                .FromSqlRaw(query, id)
+                .Include(d => d.Administrator)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+                .FirstOrDefaultAsync();
             if (department == null)
             {
                 return NotFound();
@@ -258,6 +262,11 @@ namespace ContosoUniversity.Controllers
                 //Log the error (uncomment ex variable name and write a log.)
                 return RedirectToAction(nameof(Delete), new { concurrencyError = true, id = department.DepartmentID });
             }
+        }
+
+        private bool DepartmentExists(int id)
+        {
+            return _context.Departments.Any(e => e.DepartmentID == id);
         }
     }
 }
