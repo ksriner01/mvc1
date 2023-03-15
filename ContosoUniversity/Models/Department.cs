@@ -28,6 +28,11 @@ namespace ContosoUniversity.Models
 
         public int? InstructorID { get; set; }
 
+        //kriner-mvc8
+        //Adds a tracking property with a Timestamp data annotation attribute.
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         //kriner-mvc5
         //The Administrator property holds an Instructor property as an Administrator is generally an Instructor.
         //The Courses collection is present because a Department generally contains multiple Courses within it.
