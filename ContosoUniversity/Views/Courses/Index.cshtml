@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Course>
+
+<!--kriner-mvc6-->
+<!--Changed the title of the View from Index to Courses.-->
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <!--kriner-mvc6-->
+            <!--Added a Number column for the CourseID property as the primary key is useful in this case.-->
+            <th>
+                @Html.DisplayNameFor(model => model.CourseID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <!--kriner-mvc6-->
+                <!--Displays items in the CourseID column.-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credits)
+                </td>
+                <td>
+                    <!--kriner-mvc6-->
+                    <!--Displays the name property of the Department entity.-->
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CourseID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CourseID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CourseID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
