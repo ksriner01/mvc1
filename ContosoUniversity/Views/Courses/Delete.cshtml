@@ -11,6 +11,14 @@
     <h4>Course</h4>
     <hr />
     <dl class="row">
+        <!--kriner-mvc7-->
+        <!---->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CourseID)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -27,7 +35,9 @@
             @Html.DisplayNameFor(model => model.Department)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Department.DepartmentID)
+            <!--kriner-mvc7-->
+            <!--Changes the display from DepartmentID to Department name.-->
+            @Html.DisplayFor(model => model.Department.Name)
         </dd class>
     </dl>
     
