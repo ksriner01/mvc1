@@ -21,6 +21,9 @@ namespace ContosoUniversity.Data
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
         public DbSet<CourseAssignment> CourseAssignments { get; set; }
+        //kriner-mvc9
+        //Adds the People DbSet object from the Person base class that Instructor and Student now derive from.
+        public DbSet<Person> People { get; set; }
 
         //kriner-mvc1
         //This block of code overrides the default plural naming convention for tables by specifying singular names.
@@ -35,6 +38,9 @@ namespace ContosoUniversity.Data
             modelBuilder.Entity<Instructor>().ToTable("Instructor");
             modelBuilder.Entity<OfficeAssignment>().ToTable("OfficeAssignment");
             modelBuilder.Entity<CourseAssignment>().ToTable("CourseAssignment");
+            //kriner-mvc9
+            //Adds Person entity to the table.
+            modelBuilder.Entity<Person>().ToTable("Person");
 
             modelBuilder.Entity<CourseAssignment>()
                 .HasKey(c => new { c.CourseID, c.InstructorID });
